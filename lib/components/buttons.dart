@@ -31,14 +31,16 @@ class CenteredFLoatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10.0),
-        child: SafeArea(
-          child: FloatingActionButton(
-            heroTag: text,
-            onPressed: action,
-            child: Text(text),
-          ),
+      width: 200.0,
+      padding: EdgeInsets.all(10.0),
+      child: SafeArea(
+        child: FloatingActionButton(
+          shape: BeveledRectangleBorder(),
+          heroTag: text,
+          onPressed: action,
+          child: Text(text),
         ),
-      );
+      ),
+    );
   }
 }

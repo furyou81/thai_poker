@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
                     players: model.players,
                     addPlayer: model.addPlayer,
                     clearGame: model.clearGame,
+                    initEarning: model.initEarning,
                   );
                 },
               );

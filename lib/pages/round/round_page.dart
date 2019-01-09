@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import '../../models/round_item.dart';
 import '../../models/game_model.dart';
+import '../../components/buttons.dart';
 
 class RoundPage extends StatefulWidget {
   final List<String> players;
@@ -127,6 +128,10 @@ class _RoundPageState extends State<RoundPage> {
     );
   }
 
+  void _startRound(BuildContext context) {
+    Navigator.pushNamed(context, '/round');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +140,7 @@ class _RoundPageState extends State<RoundPage> {
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        color: Colors.yellow,
+        //color: Colors.yellow,
         child: Table(
           //border: TableBorder.all(
           // width: 1.0,
@@ -144,6 +149,13 @@ class _RoundPageState extends State<RoundPage> {
           children: _rows,
         ),
       ),
+      floatingActionButton: widget.players.length > 1
+          ? CenteredFLoatingButton(
+              action: () => _startRound(context),
+              text: 'Start this round',
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

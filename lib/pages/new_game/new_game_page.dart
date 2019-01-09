@@ -11,8 +11,13 @@ class NewGamePage extends StatefulWidget {
   final List<String> players;
   final Function addPlayer;
   final Function clearGame;
+  final Function initEarning;
 
-  NewGamePage({@required this.players, @required this.addPlayer, this.clearGame});
+  NewGamePage(
+      {@required this.players,
+      @required this.addPlayer,
+      @required this.clearGame,
+      @required this.initEarning});
 
   @override
   State<StatefulWidget> createState() {
@@ -60,6 +65,13 @@ class _NewGamePageState extends State<NewGamePage> {
         });
   }
 
+  void _play(BuildContext context) {
+    widget.players.forEach((p) {
+      widget.initEarning(p);
+    });
+    Navigator.pushNamed(context, '/round');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +89,10 @@ class _NewGamePageState extends State<NewGamePage> {
               text: 'Add a new player',
             ),
             SizedBox(height: 20.0),
-            Text('List of players', style: highlightedMediumText(context,)),
+            Text('List of players',
+                style: highlightedMediumText(
+                  context,
+                )),
             widget.players.length > 0
                 ? Expanded(
                     child: ListView.builder(
@@ -96,7 +111,7 @@ class _NewGamePageState extends State<NewGamePage> {
       ),
       floatingActionButton: widget.players.length > 1
           ? CenteredFLoatingButton(
-              action: () => Navigator.pushNamed(context, '/round'),
+              action: () => _play(context),
               text: 'Play',
             )
           : null,
