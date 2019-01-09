@@ -27,9 +27,7 @@ class RoundPage extends StatefulWidget {
 class _RoundPageState extends State<RoundPage> {
   List<TableRow> _rows = [];
   List<String> _betList = ['1', '2', '3', '4', '5', '10', '20'];
-  //Map<String, String> _bets = Map<String, String>();
   Map<String, GlobalKey<FormState>> _keys = Map<String, GlobalKey<FormState>>();
-  //String _b = "2";
 
   void _generateKeys() {
     widget.players.forEach((p) {
@@ -110,17 +108,8 @@ class _RoundPageState extends State<RoundPage> {
                   value: model.bets[u],
                   isDense: true,
                   onChanged: (String value) {
-                    print("WDWDWDWm");
                     setState(() {
-                      //    _b = value;
                       setIT(u, value);
-                      //model.addBet(u, value);
-                      //print(widget.bets);
-                      //Navigator.pushReplacementNamed(context, '/round');
-                      // _bets[u] = value;
-                      //  print(value);
-                      // print(_bets);
-                      // print(_bets[u]);
                     });
                   },
                   items: _betList.map((String v) {
@@ -133,7 +122,6 @@ class _RoundPageState extends State<RoundPage> {
               },
             ),
           );
-          // );
         },
       ),
     );
